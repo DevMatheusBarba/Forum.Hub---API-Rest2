@@ -1,15 +1,17 @@
 package forum.hub.api.domain.topico;
 
+import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 public record DadosCadastroTopico(
         @NotBlank
         String titulo,
         @NotBlank
         String mensagem,
-        @NotBlank
+        @NotNull
         Long idautor,
-        @NotBlank
+        @NotNull
         Long idcurso
 ) {
 }

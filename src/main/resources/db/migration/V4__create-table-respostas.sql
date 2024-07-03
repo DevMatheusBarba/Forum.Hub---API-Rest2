@@ -1,7 +1,0 @@
-CREATE TABLE respostas (
-id SERIAL PRIMARY KEY,
-mensagem VARCHAR(255) NOT NULL,
-idtopico INTEGER NOT NULL,
-datacriacao TIMESTAMP NOT NULL,
-idautor INTEGER
-);

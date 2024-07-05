@@ -4,11 +4,11 @@ import forum.hub.api.domain.curso.DadosListaCurso;
 import forum.hub.api.domain.resposta.Resposta;
 import forum.hub.api.domain.usuario.DadosListaUsuario;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.List;
 
 
-public record DadosDetalhamentoTopico(Long id, String titulo, String mensagem, LocalDateTime dataCriacao, Situacao situacao, DadosListaUsuario usuario, DadosListaCurso curso, List<Resposta> respostas) {
+public record DadosDetalhamentoTopico(Long id, String titulo, String mensagem, OffsetDateTime dataCriacao, Situacao situacao, DadosListaUsuario usuario, DadosListaCurso curso, List<Resposta> respostas) {
 
 
     public DadosDetalhamentoTopico(Topico topico) {

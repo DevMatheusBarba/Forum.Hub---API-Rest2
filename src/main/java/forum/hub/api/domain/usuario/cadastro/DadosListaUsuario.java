@@ -1,4 +1,6 @@
-package forum.hub.api.domain.usuario;
+package forum.hub.api.domain.usuario.cadastro;
+
+import forum.hub.api.domain.usuario.Usuario;
 
 public record DadosListaUsuario(
         String nome,

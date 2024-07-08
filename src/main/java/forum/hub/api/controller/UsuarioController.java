@@ -1,7 +1,7 @@
 package forum.hub.api.controller;
 
-import forum.hub.api.domain.usuario.DadosCadastroUsuario;
-import forum.hub.api.domain.usuario.DadosDetalhamentoUsuario;
+import forum.hub.api.domain.usuario.cadastro.DadosCadastroUsuario;
+import forum.hub.api.domain.usuario.cadastro.DadosDetalhamentoUsuario;
 import forum.hub.api.domain.usuario.Usuario;
 import forum.hub.api.domain.usuario.UsuarioRepository;
 import jakarta.persistence.Transient;

@@ -4,10 +4,7 @@ package forum.hub.api.domain.usuario;
 import forum.hub.api.domain.topico.Topico;
 import forum.hub.api.domain.usuario.cadastro.DadosCadastroUsuario;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -39,6 +36,11 @@ public class Usuario implements UserDetails {
         this.senha = dados.senha();
     }
 
+    public void setSenha (String hash){
+        this.senha = hash;
+    }
+
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority("ROLE_USER"));
@@ -46,8 +48,9 @@ public class Usuario implements UserDetails {
 
     @Override
     public String getPassword() {
-        return senha;
+        return "";
     }
+
 
     @Override
     public String getUsername() {

@@ -2,7 +2,7 @@ package forum.hub.api.domain.topico;
 
 import forum.hub.api.domain.curso.DadosListaCurso;
 import forum.hub.api.domain.resposta.Resposta;
-import forum.hub.api.domain.usuario.DadosListaUsuario;
+import forum.hub.api.domain.usuario.cadastro.DadosListaUsuario;
 
 import java.time.OffsetDateTime;
 import java.util.List;

@@ -8,11 +8,11 @@ import java.time.OffsetDateTime;
 import java.util.List;
 
 
-public record DadosDetalhamentoTopico(Long id, String titulo, String mensagem, OffsetDateTime dataCriacao, Situacao situacao, DadosListaUsuario usuario, DadosListaCurso curso, List<Resposta> respostas) {
+public record DadosDetalhamentoTopico(Long id, String titulo, String mensagem, OffsetDateTime dataCriacao, Situacao situacao, DadosListaUsuario usuario, DadosListaCurso curso, List<Resposta> respostas, Boolean ativo) {
 
 
     public DadosDetalhamentoTopico(Topico topico) {
-        this(topico.getId(), topico.getTitulo(), topico.getMensagem(), topico.getDataCriacao(),topico.getSituacao(), new DadosListaUsuario(topico.getUsuario()),new DadosListaCurso(topico.getCurso()),topico.getRespostas());
+        this(topico.getId(), topico.getTitulo(), topico.getMensagem(), topico.getDataCriacao(),topico.getSituacao(), new DadosListaUsuario(topico.getUsuario()),new DadosListaCurso(topico.getCurso()),topico.getRespostas(), topico.isAtivo());
     }
 
 }

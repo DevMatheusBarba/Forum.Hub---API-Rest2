@@ -27,7 +27,6 @@ public class TopicoController {
     @PostMapping
     @Transactional
     public ResponseEntity publicar (@RequestBody @Valid DadosCadastroTopico dados, UriComponentsBuilder uriComponentsBuilder){
-        System.out.println(dados);
         var dto = publicar.postar(dados);
         var uri = uriComponentsBuilder.path("/topico/{id}").buildAndExpand(dto.id()).toUri();
 
@@ -44,7 +43,7 @@ public class TopicoController {
     @GetMapping
     public ResponseEntity<Page<DadosListaTopico>> listaDeTopicos (@PageableDefault(size = 10, sort = {"dataCriacao"}) Pageable paginacao){
 
-        var page = repository.findTop10ByOrderByDataCriacao(paginacao).map(t -> new DadosListaTopico(t));
+        var page = repository.findTop10ByAtivoTrueOrderByDataCriacao(paginacao).map(t -> new DadosListaTopico(t));
         return ResponseEntity.ok(page);
     }
 
@@ -64,6 +63,17 @@ public class TopicoController {
         var topico = repository.getReferenceById(dados.id());
         topico.atualizaDados(dados);
         return ResponseEntity.ok(new DadosDetalhamentoTopico(topico));
+    }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public ResponseEntity excluiTopicos (@PathVariable Long id){
+        if (!repository.existsById(id)){
+            throw new ValidacaoExceptions("Topico informado não existe");
+        }
+        var topico = repository.getReferenceById(id);
+        topico.desativar();
+        return ResponseEntity.noContent().build();
     }
 
 

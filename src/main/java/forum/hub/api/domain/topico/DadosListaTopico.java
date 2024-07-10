@@ -12,10 +12,11 @@ public record DadosListaTopico(
         OffsetDateTime dataCriacao,
         Situacao situacao,
         DadosListaUsuario usuario,
-        DadosListaCurso curso
+        DadosListaCurso curso,
+        Boolean ativo
 
 ) {
     public DadosListaTopico(Topico dados) {
-        this(dados.getId(), dados.getTitulo(), dados.getMensagem(), dados.getDataCriacao(), dados.getSituacao(), new DadosListaUsuario(dados.getUsuario()), new DadosListaCurso(dados.getCurso()));
+        this(dados.getId(), dados.getTitulo(), dados.getMensagem(), dados.getDataCriacao(), dados.getSituacao(), new DadosListaUsuario(dados.getUsuario()), new DadosListaCurso(dados.getCurso()), dados.isAtivo());
     }
 }

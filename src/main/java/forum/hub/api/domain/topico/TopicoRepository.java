@@ -7,8 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface TopicoRepository extends JpaRepository< Topico, Long> {
 
-    Page<Topico> findTop10ByOrderByDataCriacao(Pageable paginacao);
+    Page<Topico> findTop10ByAtivoTrueOrderByDataCriacao(Pageable paginacao);
 
-    @Query(nativeQuery = true,value = "SELECT * FROM topicos WHERE titulo ILIKE %:busca% ")
+    @Query(nativeQuery = true,value = "SELECT * FROM topicos WHERE titulo ILIKE %:busca% AND ativo = true ")
     Page<Topico> buscarPersonalizada(Pageable paginacao,String busca);
 }

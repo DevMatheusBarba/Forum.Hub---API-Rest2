@@ -1,5 +1,6 @@
 package forum.hub.api.domain.topico;
 
+import forum.hub.api.domain.ValidacaoExceptions;
 import forum.hub.api.domain.curso.Curso;
 import forum.hub.api.domain.resposta.Resposta;
 import forum.hub.api.domain.usuario.Usuario;
@@ -46,12 +47,12 @@ public class Topico {
 
 
     @OneToMany(mappedBy = "topico")
-
     private List<Resposta> respostas;
 
+    private boolean ativo;
 
     public Topico(DadosCadastroTopico dados, Usuario dadoUser, Curso dadoCurso) {
-        this(null, dados.titulo(), dados.mensagem(), OffsetDateTime.now(), Situacao.ABERTO, dadoUser,dadoCurso,null);
+        this(null, dados.titulo(), dados.mensagem(), OffsetDateTime.now(), Situacao.ABERTO, dadoUser,dadoCurso,null, true);
     }
 
     public void atualizaDados(DadosAtualizacaoTopico dados) {
@@ -64,9 +65,15 @@ public class Topico {
         if (dados.situacao() != null){
             this.situacao = dados.situacao();
         }
-        if (dados.resposta() != null){
-            //var resposta = new Resposta(dados)
-        }
+    }
 
+    public void desativar (){
+        if (this.situacao == Situacao.ABERTO){
+            this.situacao = Situacao.FECHADO;
+        }
+        if (this.ativo == false){
+            throw new ValidacaoExceptions("Topico já foi excluido");
+        }
+        this.ativo = false;
     }
 };

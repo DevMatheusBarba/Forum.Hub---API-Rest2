@@ -14,10 +14,10 @@ public class PublicaTopico {
     private CursoRepository cursoRepository;
 
     @Autowired
-    UsuarioRepository usuarioRepository;
+    private UsuarioRepository usuarioRepository;
 
     @Autowired
-    TopicoRepository topicoRepository;
+    private TopicoRepository topicoRepository;
 
     public DadosDetalhamentoTopico postar(DadosCadastroTopico dados) {
         if (!cursoRepository.existsById(dados.idcurso())) {
@@ -30,7 +30,6 @@ public class PublicaTopico {
 
         var curso = cursoRepository.getReferenceById(dados.idcurso());
         var usuario = usuarioRepository.getReferenceById(dados.idautor());
-
         var topico = new Topico(dados, usuario, curso);
         topicoRepository.save(topico);
 

@@ -4,6 +4,7 @@ import forum.hub.api.domain.usuario.cadastro.DadosCadastroUsuario;
 import forum.hub.api.domain.usuario.cadastro.DadosDetalhamentoUsuario;
 import forum.hub.api.domain.usuario.Usuario;
 import forum.hub.api.domain.usuario.UsuarioRepository;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.persistence.Transient;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequestMapping("/usuario")
+@SecurityRequirement(name = "bearer-key")
 public class UsuarioController {
 
     @Autowired

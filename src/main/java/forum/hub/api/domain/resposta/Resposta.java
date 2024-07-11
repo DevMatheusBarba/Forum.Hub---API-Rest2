@@ -8,7 +8,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalTime;
+import java.time.OffsetDateTime;
 
 
 @Entity
@@ -24,7 +24,7 @@ public class Resposta {
 
     private String mensagem;
 
-    private LocalTime dataCriacao;
+    private OffsetDateTime dataCriacao;
 
     @ManyToOne
     @JoinColumn(name = "idtopico", nullable = false)
@@ -33,5 +33,9 @@ public class Resposta {
     @ManyToOne
     @JoinColumn(name = "idautor", nullable = false)
     private Usuario usuario;
+
+    public Resposta(DadosCadastroResposta dados, Usuario usuario, Topico topico) {
+        this(null, dados.mensagem(), OffsetDateTime.now(), topico,usuario);
+    }
 
 }

@@ -5,6 +5,7 @@ import forum.hub.api.domain.curso.Curso;
 import forum.hub.api.domain.curso.CursoRepository;
 import forum.hub.api.domain.curso.DadosCadastroCurso;
 import forum.hub.api.domain.curso.DadosDetalhamentoCurso;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.persistence.Transient;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequestMapping("/curso")
+@SecurityRequirement(name = "bearer-key")
 public class CursoController {
 
     @Autowired

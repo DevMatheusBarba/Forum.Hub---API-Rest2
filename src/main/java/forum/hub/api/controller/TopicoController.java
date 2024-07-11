@@ -3,6 +3,7 @@ package forum.hub.api.controller;
 
 import forum.hub.api.domain.ValidacaoExceptions;
 import forum.hub.api.domain.topico.*;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,13 +17,14 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequestMapping("/topico")
+@SecurityRequirement(name = "bearer-key")
 public class TopicoController {
 
     @Autowired
-   private PublicaTopico publicar;
+    private PublicaTopico publicar;
 
     @Autowired
-    TopicoRepository repository;
+    private TopicoRepository repository;
 
     @PostMapping
     @Transactional

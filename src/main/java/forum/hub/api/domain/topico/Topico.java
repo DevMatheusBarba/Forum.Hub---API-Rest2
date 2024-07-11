@@ -38,11 +38,11 @@ public class Topico {
     private Situacao situacao;
 
     @ManyToOne
-    @JoinColumn(name = "idautor", nullable = false)
+    @JoinColumn(name = "id_autor", nullable = false)
     private Usuario usuario;
 
     @ManyToOne
-    @JoinColumn(name = "idcurso")
+    @JoinColumn(name = "id_curso")
     private Curso curso;
 
 
@@ -50,6 +50,7 @@ public class Topico {
     private List<Resposta> respostas;
 
     private boolean ativo;
+
 
     public Topico(DadosCadastroTopico dados, Usuario dadoUser, Curso dadoCurso) {
         this(null, dados.titulo(), dados.mensagem(), OffsetDateTime.now(), Situacao.ABERTO, dadoUser,dadoCurso,null, true);

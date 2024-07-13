@@ -38,7 +38,16 @@ API permite o cadastro e gerenciamento de topicos, usuarios, respostas e cursos,
 1. Clone o repositório:
    ```bash
    git clone https://github.com/DevMatheusBarba/Voll.med---API-Rest.git
+   ```
+2. Crie as variaveis de ambiente no seu sistema operacional
+   
+``` bash
+   #BD_HOST = localhost
 
+   #BD_USER = postgres (Usuario padrão do PostgreSQL)
+
+   #BD_PASSWORD = Sua Senha do Banco PostgreSQL
+```
 ## Configuração
 
 1. Crie um banco de dados nomeado como **Forum.hub** no postgreSQL
@@ -46,7 +55,7 @@ API permite o cadastro e gerenciamento de topicos, usuarios, respostas e cursos,
    >
    > Caso crei o banco com outro nome precisa alterar o o endereço no **src/main/resources/application.properties** na propriedade spring.datasource.url .
    
-   2. Crie um usuário no banco de dados.
+2. Crie um usuário no banco de dados.
    >    Acesse o Postman com a sua aplicação rodando, dispare uma requisição do tipo POST para o endereço: http://localhost:8080/usuario
       
           {
